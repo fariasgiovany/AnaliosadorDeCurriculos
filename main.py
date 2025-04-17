@@ -1,6 +1,7 @@
 from typing import Annotated
 import pdfoperacoes as pdfop
 from fastapi import FastAPI, File, UploadFile
+import iapai as ia
 
 app = FastAPI()
 
@@ -13,10 +14,12 @@ async def root():
 @app.post("/enviar/")
 async def create_upload_file(file: UploadFile):
     if (file.content_type == "application/pdf"):
+        
         arquivo=pdfop.Pdfoperacoes(file.file)
         texto = arquivo.gettext()
-        print (texto)
-        return("PDF file detected")
+        resposta = ia.Iapai().pediria(texto)
+        resposta = resposta.replace("\n","<br />")
+        return(resposta)
     else:
         return("File type not supported")
     

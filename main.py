@@ -17,7 +17,7 @@ async def create_upload_file(file: UploadFile):
         
         arquivo=pdfop.Pdfoperacoes(file.file)
         texto = arquivo.gettext()
-        resposta = ia.Iapai().pediria(texto)
+        resposta = ia.Iapai().pediriadeepseek(texto)
         resposta = resposta.replace("\n","<br />")
         return(resposta)
     else:

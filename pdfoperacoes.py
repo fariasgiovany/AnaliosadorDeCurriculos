@@ -11,5 +11,5 @@ class Pdfoperacoes:
         for pagina in self.reader.pages:
             texto += pagina.extract_text()
             texto=texto.replace("\n"," ")
-            texto=texto+"se não tiver informaçoes sobre curriculo, responder texto invalido e não analisar texto"
+            texto=texto+"se não tiver informaçoes sobre curriculo, responder apenas texto invalido e não analisar texto"
         return texto

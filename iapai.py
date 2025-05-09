@@ -1,6 +1,7 @@
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+from google import genai
 
 class Iapai:
     
@@ -9,7 +10,7 @@ class Iapai:
     def pediria(self,texto):
         self.texto = texto
         load_dotenv()
-        client = OpenAI(api_key=os.getenv("DEEPSEEKKEY"), base_url="https://api.deepseek.com")
+        client = genai.Client(api_key="os.getenv('DEEPSEEK_API_KEY')")
 
         response = client.chat.completions.create(
             model="deepseek-chat",

@@ -7,9 +7,10 @@ class Pdfoperacoes:
         self.arquivo = arquivo
         self.reader = PdfReader(arquivo)
     def gettext(self):
-        texto = "Analisar esse curriculo,  e criar um curriculo melhor em em latex. Responder apenas com o codigo em latex. "
+        texto = "Analisar esse curriculo,  melhorar curriculo em latex. Responder apenas com o codigo em latex. "
         for pagina in self.reader.pages:
             texto += pagina.extract_text()
             texto=texto.replace("\n"," ")
-            texto=texto+"se não tiver informaçoes sobre curriculo, responder apenas texto invalido e não analisar texto"
+        texto=texto+"se não tiver informaçoes sobre curriculo, responder apenas texto invalido e não analisar texto."
+        
         return texto
